@@ -15,7 +15,7 @@ export const Reviews = () => {
 
   return (
     <>
-      {reviews && (
+      {reviews.length !==0 ? (
         <>
           {reviews.map(review => (
             <div key={review.id}>
@@ -24,7 +24,7 @@ export const Reviews = () => {
             </div>
           ))}
         </>
-      )}
+      ): <h3>No reviews</h3> }
     </>
   );
 };

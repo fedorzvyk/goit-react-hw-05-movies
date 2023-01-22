@@ -1,0 +1,7 @@
+import styled from 'styled-components';
+
+export const Form = styled.form`
+  display: flex;
+  gap: 16px;
+  margin-bottom:16px;
+`;

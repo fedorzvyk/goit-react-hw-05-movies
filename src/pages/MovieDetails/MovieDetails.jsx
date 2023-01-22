@@ -3,6 +3,7 @@ import { getMovieById } from 'api/api';
 import { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Box } from 'components/Box';
+import { Button } from './MovieDetails.styled';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500/';
 
@@ -20,14 +21,14 @@ export const MovieDetails = () => {
   }, [id]);
 
   const handleGoBack = () => {
-    navigate(location.state.from);
+    navigate(location.state?.from || '/movies');
   };
 
   return (
     <main>
-      <button onClick={handleGoBack}>Go back</button>
+      <Button onClick={handleGoBack}>Go back</Button>
       {movie && (
-        <div>
+        <>
           <Box width="300px">
             <img src={`${BASE_POSTER_URL}${movie.poster_path}`} alt="" />
             <h2>{movie.title}</h2>
@@ -36,15 +37,19 @@ export const MovieDetails = () => {
           <div>
             <ul>
               <li>
-                <Link to="cast">Cast</Link>
+                <Link to="cast" state={location.state}>
+                  Cast
+                </Link>
               </li>
               <li>
-                <Link to="reviews">Reviews</Link>
+                <Link to="reviews" state={location.state}>
+                  Reviews
+                </Link>
               </li>
             </ul>
-            <Outlet />
           </div>
-        </div>
+          <Outlet />
+        </>
       )}
     </main>
   );

@@ -5,7 +5,9 @@ const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w300/';
 const FAKE_PHOTO = 'https://screench.com/upload/no-poster.jpeg';
 
 export const MovieList = ({ movies }) => {
+  // console.log(movies);
   const location = useLocation();
+
   return (
     <Box display="flex" gridGap={5} flexWrap="wrap">
       {movies.map(movie => (
@@ -21,7 +23,7 @@ export const MovieList = ({ movies }) => {
                   ? BASE_POSTER_URL + movie.poster_path
                   : FAKE_PHOTO
               }`}
-              alt=""
+              alt={movie.title}
             />
 
             <h3>{movie.title}</h3>
