@@ -11,3 +11,7 @@ transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
       
 }
 `;
+
+export const Title = styled.h3`
+    padding: 5px;
+`

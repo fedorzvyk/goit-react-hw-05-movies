@@ -20,7 +20,7 @@ img {
   height: auto;
 }
 
-/* h1,
+h1,
 h2,
 h3,
 h4,
@@ -29,7 +29,7 @@ h6,
 p {
   margin: 0;
   padding: 0;
-} */
+}
 ul,
 ol {
   list-style: none;
@@ -38,9 +38,8 @@ ol {
 }
 
 a {
-  outline: none;
+  /* outline: none; */
   text-decoration: none;
-  padding: 2px 1px 0;
   color:orangered;
 }
 

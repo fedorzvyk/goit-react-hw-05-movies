@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Box } from 'components/Box';
 import PropTypes from 'prop-types';
-import {Wraper} from './MovieList.styled'
+import {Wraper, Title} from './MovieList.styled'
 
 
 
@@ -30,7 +30,7 @@ export const MovieList = ({ movies }) => {
               alt={title}
             />
 
-            <h3>{title}</h3>
+            <Title>{title}</Title>
           </Link>
         </Wraper>
       ))}
