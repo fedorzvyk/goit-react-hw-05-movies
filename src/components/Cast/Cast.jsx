@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from 'components/Box';
 
+
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 const FAKE_PHOTO =
   'https://restorixhealth.com/wp-content/uploads/2018/08/No-Image.png';

@@ -1,5 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Box } from 'components/Box';
+import PropTypes from 'prop-types';
+
+
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w300/';
 const FAKE_PHOTO = 'https://screench.com/upload/no-poster.jpeg';
@@ -10,26 +13,36 @@ export const MovieList = ({ movies }) => {
 
   return (
     <Box display="flex" gridGap={5} flexWrap="wrap">
-      {movies.map(movie => (
-        <Box width="250px" key={movie.id}>
+      {movies.map(({poster_path, id, title}) => (
+        <Box width="250px" key={id}>
           <Link
-            key={movie.id}
+            key={id}
             state={{ from: location }}
-            to={`/movies/${movie.id}`}
+            to={`/movies/${id}`}
           >
             <img
               src={`${
-                movie.poster_path
-                  ? BASE_POSTER_URL + movie.poster_path
+                poster_path
+                  ? BASE_POSTER_URL + poster_path
                   : FAKE_PHOTO
               }`}
-              alt={movie.title}
+              alt={title}
             />
 
-            <h3>{movie.title}</h3>
+            <h3>{title}</h3>
           </Link>
         </Box>
       ))}
     </Box>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      poster_path:PropTypes.string
+    })
+  ),
 };
