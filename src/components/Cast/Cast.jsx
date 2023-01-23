@@ -2,7 +2,7 @@ import { getCast } from 'api/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from 'components/Box';
-
+// import PropTypes from 'prop-types';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 const FAKE_PHOTO =
@@ -22,17 +22,17 @@ export const Cast = () => {
     <Box display="flex" gridGap={5} flexWrap="wrap">
       {cast && (
         <>
-          {cast.map(actor => (
-            <Box width="100px" key={actor.id}>
+          {cast.map(({profile_path,id,name}) => (
+            <Box width="100px" key={id}>
               <img
                 src={`${
-                  actor.profile_path
-                    ? BASE_POSTER_URL + actor.profile_path
+                  profile_path
+                    ? BASE_POSTER_URL + profile_path
                     : FAKE_PHOTO
                 }`}
                 alt="actor.name"
               />
-              <h3>{actor.name}</h3>
+              <h3>{name}</h3>
             </Box>
           ))}
         </>
@@ -40,3 +40,14 @@ export const Cast = () => {
     </Box>
   );
 };
+
+
+// Cast.propTypes = {
+//   cast: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number,
+//       name: PropTypes.string,
+//       profile_path:PropTypes.string,
+//     })
+//   ),
+// };

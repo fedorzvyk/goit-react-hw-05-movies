@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Box } from 'components/Box';
 import PropTypes from 'prop-types';
+import {Wraper} from './MovieList.styled'
 
 
 
@@ -14,7 +15,7 @@ export const MovieList = ({ movies }) => {
   return (
     <Box display="flex" gridGap={5} flexWrap="wrap">
       {movies.map(({poster_path, id, title}) => (
-        <Box width="250px" key={id}>
+        <Wraper  key={id}>
           <Link
             key={id}
             state={{ from: location }}
@@ -31,7 +32,7 @@ export const MovieList = ({ movies }) => {
 
             <h3>{title}</h3>
           </Link>
-        </Box>
+        </Wraper>
       ))}
     </Box>
   );
@@ -42,7 +43,8 @@ MovieList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       title: PropTypes.string,
-      poster_path:PropTypes.string
+      poster_path:PropTypes.string,
+      overview:PropTypes.string
     })
   ),
 };
